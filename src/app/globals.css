@@ -1,26 +1,166 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Lenis essential styling */
+html.lenis, html.lenis body {
+  height: auto;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+
+
+@theme {
+
+  --color-ivory: #fcfaf5;
+  --color-sand: #f7f3ea;
+  --color-sand-deep: #efe9dd;
+  --color-ink: #080807;
+  --color-ink-soft: #3b3935;
+  --color-muted: #77736b;
+  --color-gold: #ecbd66;
+  --color-gold-deep: #b98a3d;
+  --color-gold-soft: #f3d99b;
+  --color-paper: #ffffff;
+
+  --color-background: #fcfaf5;
+  --color-foreground: #080807;
+  --color-card: #ffffff;
+  --color-primary: #ecbd66;
+  --color-primary-foreground: #080807;
+  --color-border: color-mix(in oklab, #080807 10%, transparent);
+  --color-ring: #ecbd66;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+
+  --shadow-soft: 0 18px 40px -28px rgb(8 8 7 / 0.28);
+  --shadow-lift: 0 22px 50px -24px rgb(8 8 7 / 0.22);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme {
+  --font-sans: var(--font-almarai), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    scroll-behavior: auto;
+  }
+
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-gold) 45%, transparent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-deep);
+    outline-offset: 3px;
+  }
+
+  section[id],
+  [id="idea"],
+  [id="how"],
+  [id="packages"],
+  [id="dedication"],
+  [id="documentation"],
+  [id="trust"],
+  [id="contact"],
+  [id="faq"] {
+    scroll-margin-top: 6rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+.gold-glow {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(236 189 102 / 0.22), transparent 58%),
+    var(--color-ivory);
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(180deg, rgb(8 8 7 / 0.38) 0%, rgb(8 8 7 / 0.28) 42%, rgb(8 8 7 / 0.72) 100%);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+.PhoneInputInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  width: 100%;
+}
+
+.PhoneInputCountrySelect {
+  background: transparent;
+  cursor: pointer;
 }
