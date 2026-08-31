@@ -24,7 +24,7 @@ function cn(...inputs: ClassValue[]) {
 
 export function Packages() {
   const rootRef = useRef<HTMLElement>(null);
-  
+
   const quantity = useOrderStore((s: any) => s.packageQuantity);
   const setPackage = useOrderStore((s: any) => s.setPackage);
   const total = selectTotalPrice(quantity);
@@ -49,7 +49,7 @@ export function Packages() {
         });
       }
     },
-    { scope: rootRef }
+    { scope: rootRef },
   );
 
   return (
@@ -60,7 +60,10 @@ export function Packages() {
     >
       <Container>
         {/* Editorial Section Header */}
-        <header data-pkg-reveal className="max-w-2xl mx-auto text-center mb-16 sm:mb-20">
+        <header
+          data-pkg-reveal
+          className="max-w-2xl mx-auto text-center mb-16 sm:mb-20"
+        >
           {copy.packages.eyebrow && (
             <p className="mb-3 text-[12px] font-semibold tracking-[0.25em] text-gold-deep uppercase">
               {copy.packages.eyebrow}
@@ -96,7 +99,7 @@ export function Packages() {
                   "group relative flex flex-col justify-between min-h-[220px] p-6 text-start transition-all duration-300 rounded-sm border cursor-pointer",
                   isSelected
                     ? "border-gold bg-sand/40 shadow-xs"
-                    : "border-sand-deep/50 bg-paper/60 hover:border-gold/60 hover:bg-paper"
+                    : "border-sand-deep/50 bg-paper/60 hover:border-gold/60 hover:bg-paper",
                 )}
               >
                 {/* Checkmark Indicator Badge */}
@@ -109,7 +112,7 @@ export function Packages() {
                       "flex size-6 items-center justify-center rounded-full border transition-all duration-300",
                       isSelected
                         ? "border-gold bg-gold text-ink scale-100"
-                        : "border-sand-deep/80 text-transparent scale-90 group-hover:border-gold/50"
+                        : "border-sand-deep/80 text-transparent scale-90 group-hover:border-gold/50",
                     )}
                     aria-hidden="true"
                   >
@@ -133,6 +136,23 @@ export function Packages() {
                 <div className="mt-8 pt-4 border-t border-sand-deep/40 flex flex-col gap-0.5">
                   <span className="text-lg font-medium font-mono tabular-nums text-ink">
                     {formatPrice(item.price)}
+                    <svg
+                      className="riyal-svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1124.14 1256.39"
+                      width="13"
+                      height="14"
+                      style={{ display: "inline-block", verticalAlign: "-0.125em" }}
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"
+                      ></path>
+                      <path
+                        fill="currentColor"
+                        d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"
+                      ></path>
+                    </svg>
                   </span>
                   <span className="text-[12px] text-muted/80">
                     {UNIT_PRICE_SAR} {copy.packages.unitLabel}
@@ -143,7 +163,9 @@ export function Packages() {
                 <div
                   className={cn(
                     "absolute bottom-0 inset-x-0 h-0.5 bg-gold transition-all duration-300",
-                    isSelected ? "opacity-100 scale-x-100" : "opacity-0 scale-x-50"
+                    isSelected
+                      ? "opacity-100 scale-x-100"
+                      : "opacity-0 scale-x-50",
                   )}
                 />
               </button>
@@ -164,6 +186,23 @@ export function Packages() {
               {quantity
                 ? `${formatQuantity(quantity)} · ${formatPrice(total)}`
                 : "لم يُحدد بعد"}
+                 <svg
+                      className="riyal-svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1124.14 1256.39"
+                      width="13"
+                      height="14"
+                      style={{ display: "inline-block", verticalAlign: "-0.125em" }}
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"
+                      ></path>
+                      <path
+                        fill="currentColor"
+                        d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"
+                      ></path>
+                    </svg>
             </p>
           </div>
 

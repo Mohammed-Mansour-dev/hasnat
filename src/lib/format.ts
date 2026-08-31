@@ -2,7 +2,7 @@ export function formatPrice(amount: number): string {
   const formatted = new Intl.NumberFormat("ar-SA", {
     numberingSystem: "latn",
   }).format(amount);
-  return `${formatted} ريال`;
+  return `${formatted}`;
 }
 
 export function formatQuantity(quantity: number): string {

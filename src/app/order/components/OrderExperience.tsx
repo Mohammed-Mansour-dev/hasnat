@@ -103,6 +103,23 @@ function PackageSelector({
             </span>
             <span className="mt-auto pt-3 text-[15px] font-medium tabular-nums text-ink">
               {formatPrice(item.price)}
+               <svg
+                      className="riyal-svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1124.14 1256.39"
+                      width="13"
+                      height="14"
+                      style={{ display: "inline-block", verticalAlign: "-0.125em" }}
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"
+                      ></path>
+                      <path
+                        fill="currentColor"
+                        d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"
+                      ></path>
+                    </svg>
             </span>
             <span className="mt-1 text-[11px] text-muted">
               {UNIT_PRICE_SAR} {copy.packages.unitLabel}
@@ -132,14 +149,35 @@ type FieldErrors = Partial<
     : undefined;
   const total = selectTotalPrice(draft.packageQuantity);
 
-  const rows: Array<{ label: string; value: string }> = [
+  const rows: Array<{ label: string; value: any }> = [
     {
       label: "عدد المصاحف",
       value: draft.packageQuantity ? formatQuantity(draft.packageQuantity) : "—",
     },
     {
       label: "الإجمالي",
-      value: draft.packageQuantity ? formatPrice(total) : "—",
+      value: draft.packageQuantity ? (
+        <>
+          {formatPrice(total)}
+          <svg
+            className="riyal-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1124.14 1256.39"
+            width="13"
+            height="14"
+            style={{ display: "inline-block", verticalAlign: "-0.125em" }}
+          >
+            <path
+              fill="currentColor"
+              d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"
+            ></path>
+            <path
+              fill="currentColor"
+              d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"
+            ></path>
+          </svg>
+        </>
+      ) : "—",
     },
     {
       label: "الإهداء",
@@ -162,13 +200,14 @@ type FieldErrors = Partial<
   }
 
   return (
-    <aside className={className}>
+    <aside className={className +"border border-red-500!"}>
       <h3 className="text-lg font-medium text-ink">{copy.order.summaryTitle}</h3>
       <dl className="mt-5 divide-y divide-ink/8 border-y border-ink/8">
         {rows.map((row) => (
           <div key={row.label} className="flex items-baseline justify-between gap-4 py-3">
             <dt className="text-sm text-muted">{row.label}</dt>
-            <dd className="text-sm font-medium text-ink">{row.value}</dd>
+            <dd className="text-sm font-medium text-ink">{row.value}
+            </dd>
           </div>
         ))}
       </dl>
@@ -313,8 +352,25 @@ export function OrderExperience({ compact = false }: { compact?: boolean }) {
           <div className="mt-8 flex items-center justify-between gap-4">
             <p className="text-sm text-muted">
               {draft.packageQuantity
-                ? `${formatQuantity(draft.packageQuantity)} · ${formatPrice(total)}`
+                ? `${formatQuantity(draft.packageQuantity)} · ${formatPrice(total)} `
                 : "اختر العدد للمتابعة"}
+                 <svg
+                      className="riyal-svg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1124.14 1256.39"
+                      width="13"
+                      height="14"
+                      style={{ display: "inline-block", verticalAlign: "-0.125em" }}
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M699.62,1113.02h0c-20.06,44.48-33.32,92.75-38.4,143.37l424.51-90.24c20.06-44.47,33.31-92.75,38.4-143.37l-424.51,90.24Z"
+                      ></path>
+                      <path
+                        fill="currentColor"
+                        d="M1085.73,895.8c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.33v-135.2l292.27-62.11c20.06-44.47,33.32-92.75,38.4-143.37l-330.68,70.27V66.13c-50.67,28.45-95.67,66.32-132.25,110.99v403.35l-132.25,28.11V0c-50.67,28.44-95.67,66.32-132.25,110.99v525.69l-295.91,62.88c-20.06,44.47-33.33,92.75-38.42,143.37l334.33-71.05v170.26l-358.3,76.14c-20.06,44.47-33.32,92.75-38.4,143.37l375.04-79.7c30.53-6.35,56.77-24.4,73.83-49.24l68.78-101.97v-.02c7.14-10.55,11.3-23.27,11.3-36.97v-149.98l132.25-28.11v270.4l424.53-90.28Z"
+                      ></path>
+                    </svg>
             </p>
             <Button type="button" variant="ink" arrow onClick={goNext}>
               التالي
