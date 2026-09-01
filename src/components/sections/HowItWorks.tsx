@@ -2,11 +2,45 @@
 import { useCallback, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { copy } from "@/data/site";
-import { steps } from "@/data/steps";
 import { gsap, prefersReducedMotion, registerGsap, ScrollTrigger, staggerReveal } from "@/lib/animations";
 import type { ReactNode } from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Step } from "@/data";
+
+export const steps: Step[] = [
+  {
+    number: "01",
+    title: "اختر عدد المصاحف",
+    description:
+      "حدد العدد الذي ترغب في إهدائه. نحن نتولى الشراء والتوزيع نيابة عنك.",
+  },
+  {
+    number: "02",
+    title: "حدد لمن الإهداء",
+    description: (
+      <>
+       " اختر نية الإهداء: لنفسك، لوالديك، لشخص تحبه، أو عن روح من فقدت."
+        <strong className="text-ink" >
+          'ويمكنك أيضًا إضافة اسم الشخص المُهدى إليه ليُكتب على المصحف.'
+        </strong>
+      </>
+    )
+   },
+  {
+    number: "03",
+    title: "أرسل طلبك",
+    description:
+      "أدخل اسمك ورقم واتساب، وسنستلم طلبك مباشرة ونتواصل معك للتأكيد.",
+  },
+  {
+    number: "04",
+    title: "نقوم بالتنفيذ والتوثيق",
+    description:
+      "نوزّع المصاحف على ضيوف الرحمن في الحرم، ثم نرسل لك توثيق التوزيع عبر واتساب.",
+  },
+];
+
 
  function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -173,7 +207,7 @@ export function HowItWorks() {
                   <span className="mx-1 text-gold-deep">/</span>
                   <span className="text-muted">{String(total).padStart(2, "0")}</span>
                 </p>
-                <p className="mt-2 max-w-[11rem] text-sm leading-relaxed text-muted">
+                <p className="mt-2 max-w-44 text-sm leading-relaxed text-muted">
                   {steps[activeIndex]?.title}
                 </p>
               </div>

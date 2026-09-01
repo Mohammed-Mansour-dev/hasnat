@@ -10,6 +10,7 @@ import { type ElementType, type FormEvent, type ReactNode, useRef, useState } fr
 import { useGSAP } from "@gsap/react";
 import { fadeUp, prefersReducedMotion, registerGsap } from "@/lib/animations";
 import { cn } from "@/lib/utils";
+import flags from "react-phone-number-input/flags";
 
 function Reveal({
   children,
@@ -273,6 +274,7 @@ export function Contact() {
                         <PhoneInput
                           defaultCountry="SA"
                           international
+                          flags={flags}
                           withCountryCallingCode
                           value={phone}
                           onChange={(val) => {

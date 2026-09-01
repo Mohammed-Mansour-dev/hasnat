@@ -38,7 +38,7 @@ export type DedicationOption = {
 export type Step = {
   number: string;
   title: string;
-  description: string;
+  description: any;
 };
 
 export type FAQItem = {

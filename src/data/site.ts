@@ -2,7 +2,7 @@ import { dedicationOptions } from "./dedication";
 import { faqItems } from "./faq";
 import { legalItems, navItems } from "./navigation";
 import { packages, UNIT_PRICE_SAR } from "./packages";
-import { steps } from "./steps";
+
 import { trust } from "./trust";
 import type { BrandInfo, ContactInfo, HeroData } from "./types";
 
@@ -139,7 +139,6 @@ export const siteData = {
   packages,
   unitPrice: UNIT_PRICE_SAR,
   dedicationOptions,
-  steps,
   faq: faqItems,
   trust,
   navigation: navItems,
